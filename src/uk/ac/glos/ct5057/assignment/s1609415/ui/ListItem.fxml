@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="443.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Button mnemonicParsing="false" prefHeight="0.0" prefWidth="27.0" text="+">
+         <HBox.margin>
+            <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
+         </HBox.margin>
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Button>
+      <Separator orientation="VERTICAL" prefHeight="200.0" />
+      <Label prefHeight="25.0" prefWidth="186.0" text="Label" textAlignment="CENTER" />
+      <Separator orientation="VERTICAL" prefHeight="200.0" />
+      <Label prefHeight="25.0" prefWidth="118.0" text="Label" textAlignment="CENTER" />
+      <Separator orientation="VERTICAL" prefHeight="200.0" />
+      <Label prefHeight="25.0" prefWidth="57.0" text="Label" textAlignment="CENTER" />
+   </children>
+</HBox>
