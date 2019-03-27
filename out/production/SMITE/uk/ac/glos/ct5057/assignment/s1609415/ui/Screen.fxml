@@ -8,9 +8,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="1000.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uk.ac.glos.ct5057.assignment.s1609415.ui.ScreenController">
+<AnchorPane fx:id="mainAnchorPane" onMouseClicked="#mainAnchorPaneClick" prefHeight="1000.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uk.ac.glos.ct5057.assignment.s1609415.ui.ScreenController">
    <children>
-      <ListView fx:id="itemsListView" layoutX="937.0" layoutY="134.0" maxHeight="487.0" prefHeight="487.0" prefWidth="443.0" />
+      <ListView fx:id="itemsListView" focusTraversable="false" layoutX="937.0" layoutY="134.0" maxHeight="487.0" prefHeight="487.0" prefWidth="443.0" />
       <Label layoutX="1090.0" layoutY="30.0" text="Available Items">
          <font>
             <Font size="20.0" />
@@ -22,7 +22,7 @@
             <Font size="18.0" />
          </font>
       </Text>
-      <ListView fx:id="basketListView" layoutX="937.0" layoutY="667.0" maxHeight="231.0" prefHeight="231.0" prefWidth="443.0" />
+      <ListView fx:id="basketListView" focusTraversable="false" layoutX="937.0" layoutY="667.0" maxHeight="231.0" prefHeight="231.0" prefWidth="443.0" />
       <Rectangle fill="#dadada" height="30.0" layoutX="973.0" layoutY="105.0" stroke="#5d5d5d" strokeType="INSIDE" width="189.0" />
       <Rectangle fill="#dadada" height="30.0" layoutX="1161.0" layoutY="105.0" stroke="#5d5d5d" strokeType="INSIDE" width="121.0" />
       <Rectangle fill="#dadada" height="30.0" layoutX="1281.0" layoutY="105.0" stroke="#5d5d5d" strokeType="INSIDE" width="99.0" />
@@ -106,8 +106,8 @@
             <Double fx:value="-9.0" />
          </points>
       </Polygon>
-      <ListView fx:id="westListView" layoutX="36.0" layoutY="731.0" maxHeight="231.0" prefHeight="231.0" prefWidth="390.0" />
-      <ListView fx:id="eastListView" layoutX="513.0" layoutY="731.0" maxHeight="231.0" prefHeight="231.0" prefWidth="390.0" />
+      <ListView fx:id="westListView" focusTraversable="false" layoutX="36.0" layoutY="731.0" maxHeight="231.0" prefHeight="231.0" prefWidth="390.0" />
+      <ListView fx:id="eastListView" focusTraversable="false" layoutX="513.0" layoutY="731.0" maxHeight="231.0" prefHeight="231.0" prefWidth="390.0" />
       <ImageView fitHeight="613.0" fitWidth="867.0" layoutX="36.0" layoutY="66.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@map.png" />
@@ -136,7 +136,7 @@
       <Region fx:id="sizeRegion" layoutX="1161.0" layoutY="105.0" prefHeight="30.0" prefWidth="121.0" />
       <Region fx:id="priceRegion" layoutX="1282.0" layoutY="105.0" prefHeight="30.0" prefWidth="99.0" />
       <TextField fx:id="searchTextField" layoutX="937.0" layoutY="66.0" prefHeight="27.0" prefWidth="443.0" promptText="Search..." />
-      <Label layoutX="650.0" layoutY="132.0" text="4: Send delivery" />
+      <Label layoutX="650.0" layoutY="132.0" text="4: Send delivery (reset)" />
       <Line endX="15.0" layoutX="378.0" layoutY="709.0" rotate="45.0" startX="-15.0" stroke="#001eff" strokeWidth="3.0" />
       <Line endX="15.0" layoutX="851.0" layoutY="709.0" rotate="45.0" startX="-15.0" stroke="#b50000" strokeWidth="3.0" />
       <Rectangle fill="#dadada" height="30.0" layoutX="937.0" layoutY="105.0" stroke="#5d5d5d" strokeType="INSIDE" width="37.0" />

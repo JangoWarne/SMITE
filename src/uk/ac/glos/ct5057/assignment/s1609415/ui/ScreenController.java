@@ -1,18 +1,27 @@
 package uk.ac.glos.ct5057.assignment.s1609415.ui;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Region;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Polygon;
+import uk.ac.glos.ct5057.assignment.s1609415.items.Item;
 
+import java.net.URL;
 import java.util.HashMap;
+import java.util.ResourceBundle;
 
-public class ScreenController {
+public class ScreenController implements Initializable {
+
+    @FXML private AnchorPane mainAnchorPane;
 
     @FXML private ImageView businessA_ImageView;
     @FXML private ImageView businessF_ImageView;
@@ -38,10 +47,10 @@ public class ScreenController {
     @FXML private Circle business2_Circle;
     @FXML private Circle business4_Circle;
 
-    @FXML private ListView itemsListView;
-    @FXML private ListView basketListView;
-    @FXML private ListView westListView;
-    @FXML private ListView eastListView;
+    @FXML private ListView<Item> itemsListView;
+    @FXML private ListView<Item> basketListView;
+    @FXML private ListView<Item> westListView;
+    @FXML private ListView<Item> eastListView;
 
     @FXML private Polygon nameAscPolygon;
     @FXML private Polygon nameDescPolygon;
@@ -167,10 +176,10 @@ public class ScreenController {
     @FXML private Pane east_DE_Pane;
 
     private HashMap<String, Pane> routes;
-
+    private ObservableList<Item> itemObservableList;
 
     @FXML
-    private void initialize() {
+    public void initialize(URL location, ResourceBundle resources) {
 
         clearBusinesses();
 
@@ -206,6 +215,32 @@ public class ScreenController {
         nameAscPolygon.setVisible(false);
         sizeAscPolygon.setVisible(false);
         priceAscPolygon.setVisible(false);
+
+        // Define itemListView
+        itemsListView.setItems(itemObservableList);
+        itemsListView.setCellFactory( listView -> new ListItemController() );
+        itemsListView.setEditable(true);
+    }
+
+    @FXML
+    private void mainAnchorPaneClick() {
+        // Deselect focus
+        mainAnchorPane.requestFocus();
+    }
+
+    public ScreenController() {
+        //
+        itemObservableList = FXCollections.observableArrayList();
+
+        // Add some items
+        itemObservableList.addAll(
+                new Item("Name1", "Size1", 1.1),
+                new Item("Name2", "Size2", 2.2),
+                new Item("Name3", "Size3", 3.3),
+                new Item("Name4", "Size4", 4.4),
+                new Item("Name5", "Size5", 5.5),
+                new Item("Name6", "Size6", 6.6)
+        );
     }
 
 
@@ -465,8 +500,11 @@ public class ScreenController {
         priceAscPolygon.setVisible( false );
         priceDescPolygon.setVisible( true );
 
+        // Clear search box
+        searchTextField.clear();
 
-        // do other stuff
+        // Clear items lists
+        itemObservableList.clear();
     }
 
     private void itemSearch(String searchTest) {
@@ -476,4 +514,11 @@ public class ScreenController {
 
         }
     }
+
+    public void addItem
+    /* TODO:
+    additem
+    item moves to basket list
+    delivery lists *mirror* basket list
+    */
 }
