@@ -1,5 +1,12 @@
 package uk.ac.glos.ct5057.assignment.s1609415.items;
 
+
+/**
+ * This class stores the information about an Item
+ *
+ * @author  Joshua Walker
+ * @version 1.0
+ */
 public class Item {
 
     private String name;

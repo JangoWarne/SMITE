@@ -1,5 +1,7 @@
 package uk.ac.glos.ct5057.assignment.s1609415.ui;
 
+import uk.ac.glos.ct5057.assignment.s1609415.items.Item;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -7,10 +9,17 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
-import uk.ac.glos.ct5057.assignment.s1609415.items.Item;
 
 import java.io.IOException;
 
+
+/**
+ * This class is the controller for ListItem.fxml
+ * it sets the handles for UI events/actions
+ *
+ * @author  Joshua Walker
+ * @version 1.0
+ */
 public class ListItemController extends ListCell<Item> {
 
     @FXML private HBox hBox;
@@ -30,8 +39,7 @@ public class ListItemController extends ListCell<Item> {
         this.clickable = clickable;
     }
 
-    @Override
-    protected void updateItem(Item item, boolean empty) {
+    @Override protected void updateItem(Item item, boolean empty) {
         super.updateItem(item, empty);
 
         if(empty || item == null) {

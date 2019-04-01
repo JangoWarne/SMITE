@@ -1,5 +1,7 @@
 package uk.ac.glos.ct5057.assignment.s1609415.ui;
 
+import uk.ac.glos.ct5057.assignment.s1609415.items.Item;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -13,12 +15,19 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.Region;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Polygon;
-import uk.ac.glos.ct5057.assignment.s1609415.items.Item;
 
 import java.net.URL;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 
+
+/**
+ * This class is the controller for Screen.fxml
+ * it sets the handles for UI events/actions
+ *
+ * @author  Joshua Walker
+ * @version 1.0
+ */
 public class ScreenController implements Initializable {
 
     @FXML private AnchorPane mainAnchorPane;
@@ -181,8 +190,7 @@ public class ScreenController implements Initializable {
     private ObservableList<Item> eastObservableList;
     private ObservableList<Item> westObservableList;
 
-    @FXML
-    public void initialize(URL location, ResourceBundle resources) {
+    @FXML public void initialize(URL location, ResourceBundle resources) {
 
         clearBusinesses();
 
@@ -240,8 +248,7 @@ public class ScreenController implements Initializable {
         westListView.setEditable(true);
     }
 
-    @FXML
-    private void mainAnchorPaneClick() {
+    @FXML private void mainAnchorPaneClick() {
         // Deselect focus
         mainAnchorPane.requestFocus();
     }
