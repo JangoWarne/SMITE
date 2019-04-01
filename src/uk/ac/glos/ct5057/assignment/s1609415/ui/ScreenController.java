@@ -49,8 +49,8 @@ public class ScreenController implements Initializable {
 
     @FXML private ListView<Item> itemsListView;
     @FXML private ListView<Item> basketListView;
-    @FXML private ListView<Item> westListView;
     @FXML private ListView<Item> eastListView;
+    @FXML private ListView<Item> westListView;
 
     @FXML private Polygon nameAscPolygon;
     @FXML private Polygon nameDescPolygon;
@@ -177,6 +177,9 @@ public class ScreenController implements Initializable {
 
     private HashMap<String, Pane> routes;
     private ObservableList<Item> itemObservableList;
+    private ObservableList<Item> basketObservableList;
+    private ObservableList<Item> eastObservableList;
+    private ObservableList<Item> westObservableList;
 
     @FXML
     public void initialize(URL location, ResourceBundle resources) {
@@ -184,26 +187,26 @@ public class ScreenController implements Initializable {
         clearBusinesses();
 
         // Handlers for clicks on businesses
-        businessA_ImageView.setOnMouseClicked(this::businessAHandle);
-        businessF_ImageView.setOnMouseClicked(this::businessFHandle);
-        businessJ_ImageView.setOnMouseClicked(this::businessJHandle);
-        businessL_ImageView.setOnMouseClicked(this::businessLHandle);
-        businessN_ImageView.setOnMouseClicked(this::businessNHandle);
-        businessO_ImageView.setOnMouseClicked(this::businessOHandle);
-        businessT_ImageView.setOnMouseClicked(this::businessTHandle);
-        businessV_ImageView.setOnMouseClicked(this::businessVHandle);
-        businessW_ImageView.setOnMouseClicked(this::businessWHandle);
-        business2_ImageView.setOnMouseClicked(this::business2Handle);
-        business4_ImageView.setOnMouseClicked(this::business4Handle);
+        businessA_ImageView.setOnMouseClicked( this::businessAHandle );
+        businessF_ImageView.setOnMouseClicked( this::businessFHandle );
+        businessJ_ImageView.setOnMouseClicked( this::businessJHandle );
+        businessL_ImageView.setOnMouseClicked( this::businessLHandle );
+        businessN_ImageView.setOnMouseClicked( this::businessNHandle );
+        businessO_ImageView.setOnMouseClicked( this::businessOHandle );
+        businessT_ImageView.setOnMouseClicked( this::businessTHandle );
+        businessV_ImageView.setOnMouseClicked( this::businessVHandle );
+        businessW_ImageView.setOnMouseClicked( this::businessWHandle );
+        business2_ImageView.setOnMouseClicked( this::business2Handle );
+        business4_ImageView.setOnMouseClicked( this::business4Handle );
 
         // Handlers for clicks on regions
-        nameRegion.setOnMouseClicked(this::nameRegionHandle);
-        sizeRegion.setOnMouseClicked(this::sizeRegionHandle);
-        priceRegion.setOnMouseClicked(this::priceRegionHandle);
-        sendDeliveryRegion.setOnMouseClicked(this::sendDeliveryHandle);
+        nameRegion.setOnMouseClicked( this::nameRegionHandle );
+        sizeRegion.setOnMouseClicked( this::sizeRegionHandle );
+        priceRegion.setOnMouseClicked( this::priceRegionHandle );
+        sendDeliveryRegion.setOnMouseClicked( this::sendDeliveryHandle );
 
         // Handler for text input
-        searchTextField.textProperty().addListener((observable, oldText, newText)-> itemSearch(newText) );
+        searchTextField.textProperty().addListener( (observable, oldText, newText) -> itemSearch(newText) );
 
         // Create map of routes
         mapRoutes();
@@ -218,8 +221,23 @@ public class ScreenController implements Initializable {
 
         // Define itemListView
         itemsListView.setItems(itemObservableList);
-        itemsListView.setCellFactory( listView -> new ListItemController() );
+        itemsListView.setCellFactory( listView -> new ListItemController(this, true) );
         itemsListView.setEditable(true);
+
+        // Define basketListView
+        basketListView.setItems(basketObservableList);
+        basketListView.setCellFactory( listView -> new ListItemController(this, true) );
+        basketListView.setEditable(true);
+
+        // Define eastListView
+        eastListView.setItems(eastObservableList);
+        eastListView.setCellFactory( listView -> new ListItemController(this, false) );
+        eastListView.setEditable(true);
+
+        // Define westListView
+        westListView.setItems(westObservableList);
+        westListView.setCellFactory( listView -> new ListItemController(this, false) );
+        westListView.setEditable(true);
     }
 
     @FXML
@@ -231,16 +249,18 @@ public class ScreenController implements Initializable {
     public ScreenController() {
         //
         itemObservableList = FXCollections.observableArrayList();
+        basketObservableList = FXCollections.observableArrayList();
+        eastObservableList = FXCollections.observableArrayList();
+        westObservableList = FXCollections.observableArrayList();
 
         // Add some items
-        itemObservableList.addAll(
-                new Item("Name1", "Size1", 1.1),
-                new Item("Name2", "Size2", 2.2),
-                new Item("Name3", "Size3", 3.3),
-                new Item("Name4", "Size4", 4.4),
-                new Item("Name5", "Size5", 5.5),
-                new Item("Name6", "Size6", 6.6)
-        );
+        addListItem( new Item("Name1", "Size1", 1.1, Item.Location.East) );
+        addListItem( new Item("Name1", "Size1", 1.1, Item.Location.East) );
+        addListItem( new Item("Name2", "Size2", 2.2, Item.Location.West) );
+        addListItem( new Item("Name3", "Size3", 3.3, Item.Location.East) );
+        addListItem( new Item("Name4", "Size4", 4.4, Item.Location.West) );
+        addListItem( new Item("Name5", "Size5", 5.5, Item.Location.East) );
+        addListItem( new Item("Name6", "Size6", 6.6, Item.Location.West) );
     }
 
 
@@ -505,6 +525,9 @@ public class ScreenController implements Initializable {
 
         // Clear items lists
         itemObservableList.clear();
+        basketObservableList.clear();
+        eastObservableList.clear();
+        westObservableList.clear();
     }
 
     private void itemSearch(String searchTest) {
@@ -515,10 +538,35 @@ public class ScreenController implements Initializable {
         }
     }
 
-    public void addItem
-    /* TODO:
-    additem
-    item moves to basket list
-    delivery lists *mirror* basket list
-    */
+    protected void addListItem(Item item) {
+        //
+        itemObservableList.add( item );
+    }
+
+    protected void removeListItem(Item item) {
+        //
+        itemObservableList.remove( item );
+    }
+
+    protected void addBasketItem(Item item) {
+        //
+        basketObservableList.add( item );
+
+        if(item.getWarehouse() == Item.Location.East) {
+            eastObservableList.add( item );
+        } else {
+            westObservableList.add( item );
+        }
+    }
+
+    protected void removeBasketItem(Item item) {
+        //
+        basketObservableList.remove( item );
+
+        if(item.getWarehouse() == Item.Location.East) {
+            eastObservableList.remove( item );
+        } else {
+            westObservableList.remove( item );
+        }
+    }
 }

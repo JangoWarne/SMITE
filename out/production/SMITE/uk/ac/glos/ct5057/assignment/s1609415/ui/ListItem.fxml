@@ -9,7 +9,7 @@
 
 <HBox fx:id="hBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="405.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button mnemonicParsing="false" prefHeight="0.0" prefWidth="27.0" text="+">
+      <Button fx:id="moveButton" mnemonicParsing="false" prefHeight="0.0" prefWidth="27.0" text="+">
          <HBox.margin>
             <Insets bottom="2.0" left="-3.0" right="2.0" top="2.0" />
          </HBox.margin>
