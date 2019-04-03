@@ -1,0 +1,24 @@
+[name1]
+size = size1
+price = 1.11
+warehouse = east
+[name2]
+size = size2
+price = 2.22
+warehouse = west
+[name3]
+size = size3
+price = 3.33
+warehouse = east
+[name4]
+size = size4
+price = 4.44
+warehouse = west
+[name5]
+size = size5
+price = 5.55
+warehouse = east
+[name6]
+size = size6
+price = 6.66
+warehouse = west

@@ -1,5 +1,6 @@
 package uk.ac.glos.ct5057.assignment.s1609415.ui;
 
+import uk.ac.glos.ct5057.assignment.s1609415.file.FileRead;
 import uk.ac.glos.ct5057.assignment.s1609415.items.Item;
 
 import javafx.collections.FXCollections;
@@ -17,6 +18,7 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Polygon;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 
@@ -260,14 +262,18 @@ public class ScreenController implements Initializable {
         eastObservableList = FXCollections.observableArrayList();
         westObservableList = FXCollections.observableArrayList();
 
+        FileRead itemPath = new FileRead("src/uk/ac/glos/ct5057/assignment/s1609415/file/items.txt");
+        ArrayList<Item> items = itemPath.parseFile();
+
         // Add some items
-        addListItem( new Item("Name1", "Size1", 1.1, Item.Location.East) );
-        addListItem( new Item("Name1", "Size1", 1.1, Item.Location.East) );
-        addListItem( new Item("Name2", "Size2", 2.2, Item.Location.West) );
-        addListItem( new Item("Name3", "Size3", 3.3, Item.Location.East) );
-        addListItem( new Item("Name4", "Size4", 4.4, Item.Location.West) );
-        addListItem( new Item("Name5", "Size5", 5.5, Item.Location.East) );
-        addListItem( new Item("Name6", "Size6", 6.6, Item.Location.West) );
+        items.forEach( item -> addListItem(item) );
+//        addListItem( new Item("Name1", "Size1", 1.1, Item.Location.East) );
+//        addListItem( new Item("Name1", "Size1", 1.1, Item.Location.East) );
+//        addListItem( new Item("Name2", "Size2", 2.2, Item.Location.West) );
+//        addListItem( new Item("Name3", "Size3", 3.3, Item.Location.East) );
+//        addListItem( new Item("Name4", "Size4", 4.4, Item.Location.West) );
+//        addListItem( new Item("Name5", "Size5", 5.5, Item.Location.East) );
+//        addListItem( new Item("Name6", "Size6", 6.6, Item.Location.West) );
     }
 
 
