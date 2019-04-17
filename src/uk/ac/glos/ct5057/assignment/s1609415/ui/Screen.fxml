@@ -23,9 +23,9 @@
          </font>
       </Text>
       <ListView fx:id="basketListView" focusTraversable="false" layoutX="937.0" layoutY="667.0" maxHeight="231.0" prefHeight="231.0" prefWidth="443.0" />
-      <Rectangle fill="#dadada" height="30.0" layoutX="973.0" layoutY="105.0" stroke="#5d5d5d" strokeType="INSIDE" width="189.0" />
-      <Rectangle fill="#dadada" height="30.0" layoutX="1161.0" layoutY="105.0" stroke="#5d5d5d" strokeType="INSIDE" width="121.0" />
-      <Rectangle fill="#dadada" height="30.0" layoutX="1281.0" layoutY="105.0" stroke="#5d5d5d" strokeType="INSIDE" width="99.0" />
+      <Rectangle fx:id="nameRectangle" fill="#c8d8e1" height="30.0" layoutX="973.0" layoutY="105.0" stroke="#5d5d5d" strokeType="INSIDE" width="189.0" />
+      <Rectangle fx:id="sizeRectangle" fill="#dadada" height="30.0" layoutX="1161.0" layoutY="105.0" stroke="#5d5d5d" strokeType="INSIDE" width="121.0" />
+      <Rectangle fx:id="priceRectangle" fill="#dadada" height="30.0" layoutX="1281.0" layoutY="105.0" stroke="#5d5d5d" strokeType="INSIDE" width="99.0" />
       <Label layoutX="1125.0" layoutY="638.0" text="Basket">
          <font>
             <Font size="20.0" />
@@ -36,7 +36,7 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="1200.0" layoutY="111.0" text="Size">
+      <Label layoutX="1185.0" layoutY="111.0" text="Size (mm)">
          <font>
             <Font size="14.0" />
          </font>
@@ -135,7 +135,7 @@
       <Region fx:id="nameRegion" layoutX="973.0" layoutY="105.0" prefHeight="30.0" prefWidth="189.0" />
       <Region fx:id="sizeRegion" layoutX="1161.0" layoutY="105.0" prefHeight="30.0" prefWidth="121.0" />
       <Region fx:id="priceRegion" layoutX="1282.0" layoutY="105.0" prefHeight="30.0" prefWidth="99.0" />
-      <TextField fx:id="searchTextField" layoutX="937.0" layoutY="66.0" prefHeight="27.0" prefWidth="443.0" promptText="Search..." />
+      <TextField fx:id="searchTextField" layoutX="937.0" layoutY="66.0" prefHeight="27.0" prefWidth="443.0" promptText="Search Names..." />
       <Label layoutX="650.0" layoutY="132.0" text="4: Send delivery (reset)" />
       <Line endX="15.0" layoutX="378.0" layoutY="709.0" rotate="45.0" startX="-15.0" stroke="#001eff" strokeWidth="3.0" />
       <Line endX="15.0" layoutX="851.0" layoutY="709.0" rotate="45.0" startX="-15.0" stroke="#b50000" strokeWidth="3.0" />

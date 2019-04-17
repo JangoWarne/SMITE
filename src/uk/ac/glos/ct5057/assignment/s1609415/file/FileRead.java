@@ -27,11 +27,12 @@ public class FileRead {
     private File file;
     private boolean invalid;
     private String name = "";
-    private String size = "";
-    private String priceStr = "";
-    private String warehouseStr = "";
+    private double size;
+    private String sizeStr = "";
     private double price;
+    private String priceStr = "";
     private Item.Location warehouse;
+    private String warehouseStr = "";
     private boolean first = true;
 
 
@@ -43,11 +44,13 @@ public class FileRead {
         items = new ArrayList<>();
         BufferedReader reader;
 
+        // read file line by line
         try {
             reader = new BufferedReader(new FileReader(file));
             String line = reader.readLine();
 
             while (line != null) {
+                // the important bit :D
                 parseLine(line);
 
                 // read next line
@@ -97,7 +100,7 @@ public class FileRead {
                     } else {
                         // if neither [] or = were found then check for unbalanced brackets
                         if ( line.contains("[") || line.contains("]") ) {
-                            name = size = priceStr = warehouseStr = "";     //reset item
+                            name = sizeStr = priceStr = warehouseStr = "";     //reset item
                             invalid = true;
                             logError("Unbalanced Brackets", originalLine);
                         }
@@ -112,11 +115,11 @@ public class FileRead {
             first = false;
         } else {
             // add completed item to list
-            if ( name.isEmpty() || size.isEmpty() || priceStr.isEmpty() || warehouseStr.isEmpty()) {
+            if ( name.isEmpty() || sizeStr.isEmpty() || priceStr.isEmpty() || warehouseStr.isEmpty()) {
                 if ( name.isEmpty() ) {
                     logError("Missing Name", "lines before: " + originalLine);
                 }
-                if ( size.isEmpty() ) {
+                if ( sizeStr.isEmpty() ) {
                     logError("Missing Size", "lines before: " + originalLine);
                 }
                 if ( priceStr.isEmpty() ) {
@@ -129,7 +132,7 @@ public class FileRead {
                 items.add( new Item(name, size, price, warehouse) );
             }
         }
-        name = size = priceStr = warehouseStr = "";     //reset item
+        name = sizeStr = priceStr = warehouseStr = "";     //reset item
 
         setProperty("name", newName, originalLine);
     }
@@ -158,7 +161,12 @@ public class FileRead {
                 name = value;
                 break;
             case "size":
-                size = value;
+                try {
+                    size = Double.valueOf(value);
+                    sizeStr = value;
+                } catch (NumberFormatException e) {
+                    logError("Value Is Not A Valid Number", originalLine);
+                }
                 break;
             case "price":
                 try {

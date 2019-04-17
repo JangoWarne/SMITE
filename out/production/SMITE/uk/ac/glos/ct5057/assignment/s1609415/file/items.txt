@@ -1,24 +1,128 @@
-[name1]
-size = size1
-price = 1.11
-warehouse = east
-[name2]
-size = size2
-price = 2.22
+[Round 568nm Green LED]
+size = 3
+price = 0.40
 warehouse = west
-[name3]
-size = size3
-price = 3.33
-warehouse = east
-[name4]
-size = size4
-price = 4.44
+[Round 625nm Red LED]
+size = 3
+price = 0.40
 warehouse = west
-[name5]
-size = size5
-price = 5.55
-warehouse = east
-[name6]
-size = size6
-price = 6.66
+[Round 465nm Blue LED]
+size = 3
+price = 0.40
 warehouse = west
+[Round White LED]
+size = 3
+price = 0.44
+warehouse = west
+[Round 568nm Green LED]
+size = 5
+price = 0.44
+warehouse = west
+[Round 625nm Red LED]
+size = 5
+price = 0.44
+warehouse = west
+[Round 465nm Blue LED]
+size = 5
+price = 0.44
+warehouse = west
+[Round White LED]
+size = 5
+price = 0.50
+warehouse = west
+[Axial 100 Ohm Resistor]
+size = 6.3
+price = 0.50
+warehouse = west
+[Axial 200 Ohm Resistor]
+size = 6.3
+price = 0.50
+warehouse = west
+[Axial 500 Ohm Resistor]
+size = 6.3
+price = 0.50
+warehouse = west
+[Axial 1k Ohm Resistor]
+size = 6.3
+price = 0.50
+warehouse = west
+[Axial 2k Ohm Resistor]
+size = 6.3
+price = 0.50
+warehouse = west
+[Axial 5k Ohm Resistor]
+size = 6.3
+price = 0.50
+warehouse = west
+[Axial 10k Ohm Resistor]
+size = 6.3
+price = 0.50
+warehouse = west
+[Axial 20k Ohm Resistor]
+size = 6.3
+price = 0.50
+warehouse = west
+[Axial 50k Ohm Resistor]
+size = 6.3
+price = 0.50
+warehouse = west
+[Axial 100k Ohm Resistor]
+size = 6.3
+price = 0.50
+warehouse = west
+[Black Ball Fineliner Pen]
+size = 0.3
+price = 1.30
+warehouse = east
+[Blue Ball Fineliner Pen]
+size = 0.3
+price = 1.30
+warehouse = east
+[Red Ball Fineliner Pen]
+size = 0.3
+price = 1.30
+warehouse = east
+[Black Ball Point Pen]
+size = 1
+price = 1.71
+warehouse = east
+[Blue Ball Point Pen]
+size = 1
+price = 1.71
+warehouse = east
+[Red Ball Point Pen]
+size = 1
+price = 1.71
+warehouse = east
+[Assorted 35 Sticky Notes]
+size = 76
+price = 0.65
+warehouse = east
+[Assorted 90 Sticky Notes]
+size = 76
+price = 1.12
+warehouse = east
+[Yellow 100 Sticky Notes]
+size = 76
+price = 1.37
+warehouse = east
+[Green 50 Sticky Notes]
+size = 76
+price = 0.85
+warehouse = east
+[Assorted 35 Sticky Notes]
+size = 47.6
+price = 0.45
+warehouse = east
+[Assorted 90 Sticky Notes]
+size = 47.6
+price = 0.74
+warehouse = east
+[Yellow 100 Sticky Notes]
+size = 47.6
+price = 0.82
+warehouse = east
+[Green 50 Sticky Notes]
+size = 47.6
+price = 0.65
+warehouse = east

@@ -1,5 +1,8 @@
 package uk.ac.glos.ct5057.assignment.s1609415.ui;
 
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import uk.ac.glos.ct5057.assignment.s1609415.algorithms.RadixSort;
 import uk.ac.glos.ct5057.assignment.s1609415.file.FileRead;
 import uk.ac.glos.ct5057.assignment.s1609415.items.Item;
 
@@ -69,6 +72,10 @@ public class ScreenController implements Initializable {
     @FXML private Polygon sizeDescPolygon;
     @FXML private Polygon priceAscPolygon;
     @FXML private Polygon priceDescPolygon;
+
+    @FXML private Rectangle nameRectangle;
+    @FXML private Rectangle sizeRectangle;
+    @FXML private Rectangle priceRectangle;
 
     @FXML private Region sendDeliveryRegion;
     @FXML private Region nameRegion;
@@ -191,10 +198,11 @@ public class ScreenController implements Initializable {
     private ObservableList<Item> basketObservableList;
     private ObservableList<Item> eastObservableList;
     private ObservableList<Item> westObservableList;
+    private ArrayList<Item> allItems;
+    private ArrayList<Item> searchableItems;
+    private ArrayList<Item> foundItems;
 
     @FXML public void initialize(URL location, ResourceBundle resources) {
-
-        clearBusinesses();
 
         // Handlers for clicks on businesses
         businessA_ImageView.setOnMouseClicked( this::businessAHandle );
@@ -221,33 +229,27 @@ public class ScreenController implements Initializable {
         // Create map of routes
         mapRoutes();
 
-        // Hide all routes
-        routes.forEach((k, route) -> route.setVisible(false));
-
-        // Hide ascending arrows
-        nameAscPolygon.setVisible(false);
-        sizeAscPolygon.setVisible(false);
-        priceAscPolygon.setVisible(false);
-
         // Define itemListView
         itemsListView.setItems(itemObservableList);
-        itemsListView.setCellFactory( listView -> new ListItemController(this, true) );
+        itemsListView.setCellFactory( listView -> new ListItemController(this, true, false) );
         itemsListView.setEditable(true);
 
         // Define basketListView
         basketListView.setItems(basketObservableList);
-        basketListView.setCellFactory( listView -> new ListItemController(this, true) );
+        basketListView.setCellFactory( listView -> new ListItemController(this, true, true) );
         basketListView.setEditable(true);
 
         // Define eastListView
         eastListView.setItems(eastObservableList);
-        eastListView.setCellFactory( listView -> new ListItemController(this, false) );
+        eastListView.setCellFactory( listView -> new ListItemController(this, false, true) );
         eastListView.setEditable(true);
 
         // Define westListView
         westListView.setItems(westObservableList);
-        westListView.setCellFactory( listView -> new ListItemController(this, false) );
+        westListView.setCellFactory( listView -> new ListItemController(this, false, true) );
         westListView.setEditable(true);
+
+        resetUI();
     }
 
     @FXML private void mainAnchorPaneClick() {
@@ -263,17 +265,9 @@ public class ScreenController implements Initializable {
         westObservableList = FXCollections.observableArrayList();
 
         FileRead itemPath = new FileRead("src/uk/ac/glos/ct5057/assignment/s1609415/file/items.txt");
-        ArrayList<Item> items = itemPath.parseFile();
-
-        // Add some items
-        items.forEach( item -> addListItem(item) );
-//        addListItem( new Item("Name1", "Size1", 1.1, Item.Location.East) );
-//        addListItem( new Item("Name1", "Size1", 1.1, Item.Location.East) );
-//        addListItem( new Item("Name2", "Size2", 2.2, Item.Location.West) );
-//        addListItem( new Item("Name3", "Size3", 3.3, Item.Location.East) );
-//        addListItem( new Item("Name4", "Size4", 4.4, Item.Location.West) );
-//        addListItem( new Item("Name5", "Size5", 5.5, Item.Location.East) );
-//        addListItem( new Item("Name6", "Size6", 6.6, Item.Location.West) );
+        allItems = itemPath.parseFile();
+        searchableItems = allItems;
+        foundItems = allItems;
     }
 
 
@@ -281,6 +275,7 @@ public class ScreenController implements Initializable {
     // Business UI event handlers
 
     private void clearBusinesses(){
+        // clear user selection
         businessA_Circle.setVisible(false);
         businessF_Circle.setVisible(false);
         businessJ_Circle.setVisible(false);
@@ -479,46 +474,191 @@ public class ScreenController implements Initializable {
         String routeKey;
         Pane route;
 
+        // select requested route
         routeKey = warehouse + "_" + nodeA + nodeB;
         route = routes.get(routeKey);
 
+        // shoe route
         route.setVisible(visible);
     }
 
     private void nameRegionHandle(MouseEvent event) {
-        nameAscPolygon.setVisible( !nameAscPolygon.isVisible() );
-        nameDescPolygon.setVisible( !nameDescPolygon.isVisible() );
+        // change sort direction if already selected
+        Color rectColor = (Color)nameRectangle.getFill();
+        String colorHex = String.format( "%02x%02x%02x",
+                (int)( rectColor.getRed() * 255 ),
+                (int)( rectColor.getGreen() * 255 ),
+                (int)( rectColor.getBlue() * 255 ) );
+        if( colorHex.equals("c8d8e1") ) {
+            nameAscPolygon.setVisible( !nameAscPolygon.isVisible() );
+            nameDescPolygon.setVisible( !nameDescPolygon.isVisible() );
+        }
 
+        // ensure only this heading is selected
+        nameRectangle.setFill( Color.web("c8d8e1") );
+        sizeRectangle.setFill( Color.web("dadada") );
+        priceRectangle.setFill( Color.web("dadada") );
+
+        clearListItems();
+
+        // sort item list
         if(nameAscPolygon.isVisible()) {
-
+            RadixSort.sort( getFoundItems(), RadixSort.SortValue.Name, false ).forEach(item -> addListItem(item) );
         } else {
-
+            RadixSort.sort( getFoundItems(), RadixSort.SortValue.Name, true ).forEach(item -> addListItem(item) );
         }
     }
 
     private void sizeRegionHandle(MouseEvent event) {
-        sizeAscPolygon.setVisible( !sizeAscPolygon.isVisible() );
-        sizeDescPolygon.setVisible( !sizeDescPolygon.isVisible() );
+        // change sort direction if already selected
+        Color rectColor = (Color)sizeRectangle.getFill();
+        String colorHex = String.format( "%02x%02x%02x",
+                (int)( rectColor.getRed() * 255 ),
+                (int)( rectColor.getGreen() * 255 ),
+                (int)( rectColor.getBlue() * 255 ) );
+        if( colorHex.equals("c8d8e1") ) {
+            sizeAscPolygon.setVisible(!sizeAscPolygon.isVisible());
+            sizeDescPolygon.setVisible(!sizeDescPolygon.isVisible());
+        }
 
+        // ensure only this heading is selected
+        nameRectangle.setFill( Color.web("dadada") );
+        sizeRectangle.setFill( Color.web("c8d8e1") );
+        priceRectangle.setFill( Color.web("dadada") );
+
+        clearListItems();
+
+        // sort item list
         if(sizeAscPolygon.isVisible()) {
-
+            RadixSort.sort( getFoundItems(), RadixSort.SortValue.Size, false ).forEach(item -> addListItem(item) );
         } else {
-
+            RadixSort.sort( getFoundItems(), RadixSort.SortValue.Size, true ).forEach(item -> addListItem(item) );
         }
     }
 
     private void priceRegionHandle(MouseEvent event) {
-        priceAscPolygon.setVisible( !priceAscPolygon.isVisible() );
-        priceDescPolygon.setVisible( !priceDescPolygon.isVisible() );
+        // change sort direction if already selected
+        Color rectColor = (Color)priceRectangle.getFill();
+        String colorHex = String.format( "%02x%02x%02x",
+                (int)( rectColor.getRed() * 255 ),
+                (int)( rectColor.getGreen() * 255 ),
+                (int)( rectColor.getBlue() * 255 ) );
+        if( colorHex.equals("c8d8e1") ) {
+            priceAscPolygon.setVisible(!priceAscPolygon.isVisible());
+            priceDescPolygon.setVisible(!priceDescPolygon.isVisible());
+        }
 
+        // ensure only this heading is selected
+        nameRectangle.setFill( Color.web("dadada") );
+        sizeRectangle.setFill( Color.web("dadada") );
+        priceRectangle.setFill( Color.web("c8d8e1") );
+
+        clearListItems();
+
+        // sort item list
         if(priceAscPolygon.isVisible()) {
-
+            RadixSort.sort( getFoundItems(), RadixSort.SortValue.Price, false ).forEach(item -> addListItem(item) );
         } else {
-
+            RadixSort.sort( getFoundItems(), RadixSort.SortValue.Price, true ).forEach(item -> addListItem(item) );
         }
     }
 
     private void sendDeliveryHandle(MouseEvent event) {
+        resetUI();
+    }
+
+    private void itemSearch(String searchTest) {
+        if( searchTest.isEmpty() ) {
+            // show all items
+            foundItems = allItems;
+        } else {
+            // restrict found items to matching items only
+            foundItems = searchableItems;
+        }
+
+        //
+        //  clear item list then show found items sorted based on current sort selection
+        //
+
+        clearListItems();
+
+        Color priceColor = (Color)priceRectangle.getFill();
+        String priceHex = String.format( "%02x%02x%02x",
+                (int)( priceColor.getRed() * 255 ),
+                (int)( priceColor.getGreen() * 255 ),
+                (int)( priceColor.getBlue() * 255 ) );
+        if( priceHex.equals("c8d8e1") ) {
+            if(priceAscPolygon.isVisible()) {
+                RadixSort.sort( getFoundItems(), RadixSort.SortValue.Price, false ).forEach(item -> addListItem(item) );
+            } else {
+                RadixSort.sort( getFoundItems(), RadixSort.SortValue.Price, true ).forEach(item -> addListItem(item) );
+            }
+        }
+
+        Color sizeColor = (Color)sizeRectangle.getFill();
+        String sizeHex = String.format( "%02x%02x%02x",
+                (int)( sizeColor.getRed() * 255 ),
+                (int)( sizeColor.getGreen() * 255 ),
+                (int)( sizeColor.getBlue() * 255 ) );
+        if( sizeHex.equals("c8d8e1") ) {
+            if(sizeAscPolygon.isVisible()) {
+                RadixSort.sort( getFoundItems(), RadixSort.SortValue.Size, false ).forEach(item -> addListItem(item) );
+            } else {
+                RadixSort.sort( getFoundItems(), RadixSort.SortValue.Size, true ).forEach(item -> addListItem(item) );
+            }
+        }
+
+        Color nameColor = (Color)nameRectangle.getFill();
+        String nameHex = String.format( "%02x%02x%02x",
+                (int)( nameColor.getRed() * 255 ),
+                (int)( nameColor.getGreen() * 255 ),
+                (int)( nameColor.getBlue() * 255 ) );
+        if( nameHex.equals("c8d8e1") ) {
+            if(nameAscPolygon.isVisible()) {
+                RadixSort.sort( getFoundItems(), RadixSort.SortValue.Name, false ).forEach(item -> addListItem(item) );
+            } else {
+                RadixSort.sort( getFoundItems(), RadixSort.SortValue.Name, true ).forEach(item -> addListItem(item) );
+            }
+        }
+    }
+
+    private void addListItem(Item item) {
+        // add item to main list
+        itemObservableList.add( item );
+    }
+
+    private void clearListItems() {
+        // remove all items from main list
+        itemObservableList.clear();
+    }
+
+    protected void addBasketItem(Item item) {
+        // add item to the basket and its warehouse list
+        basketObservableList.add( item );
+
+        if(item.getWarehouse() == Item.Location.East) {
+            eastObservableList.add( item );
+        } else {
+            westObservableList.add( item );
+        }
+    }
+
+    protected void removeBasketItem(Item item) {
+        // remove item from the basket and its warehouse list
+        basketObservableList.remove( item );
+
+        if(item.getWarehouse() == Item.Location.East) {
+            eastObservableList.remove( item );
+        } else {
+            westObservableList.remove( item );
+        }
+    }
+
+    private ArrayList<Item> getFoundItems() {
+        return foundItems;
+    }
+
+    private void resetUI() {
         // Reset business selection
         clearBusinesses();
 
@@ -537,49 +677,27 @@ public class ScreenController implements Initializable {
         searchTextField.clear();
 
         // Clear items lists
-        itemObservableList.clear();
+        clearListItems();
         basketObservableList.clear();
         eastObservableList.clear();
         westObservableList.clear();
-    }
 
-    private void itemSearch(String searchTest) {
-        if( searchTest.length() >= 3 ) {
+        // Hide descending arrows
+        nameDescPolygon.setVisible(false);
+        sizeDescPolygon.setVisible(false);
+        priceDescPolygon.setVisible(false);
 
-        } else {
+        // Show ascending arrows
+        nameAscPolygon.setVisible(true);
+        sizeAscPolygon.setVisible(true);
+        priceAscPolygon.setVisible(true);
 
-        }
-    }
+        // set sort selection colors
+        nameRectangle.setFill( Color.web("c8d8e1") );
+        sizeRectangle.setFill( Color.web("dadada") );
+        priceRectangle.setFill( Color.web("dadada") );
 
-    protected void addListItem(Item item) {
-        //
-        itemObservableList.add( item );
-    }
-
-    protected void removeListItem(Item item) {
-        //
-        itemObservableList.remove( item );
-    }
-
-    protected void addBasketItem(Item item) {
-        //
-        basketObservableList.add( item );
-
-        if(item.getWarehouse() == Item.Location.East) {
-            eastObservableList.add( item );
-        } else {
-            westObservableList.add( item );
-        }
-    }
-
-    protected void removeBasketItem(Item item) {
-        //
-        basketObservableList.remove( item );
-
-        if(item.getWarehouse() == Item.Location.East) {
-            eastObservableList.remove( item );
-        } else {
-            westObservableList.remove( item );
-        }
+        // Add and sort items
+        RadixSort.sort( getFoundItems(), RadixSort.SortValue.Name, false ).forEach(item -> addListItem(item) );
     }
 }

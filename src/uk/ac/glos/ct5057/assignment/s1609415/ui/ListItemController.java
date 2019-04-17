@@ -33,22 +33,27 @@ public class ListItemController extends ListCell<Item> {
     private Item item;
     private ScreenController window;
     private boolean clickable;
+    private boolean isBasket;
 
-    public ListItemController(ScreenController window, boolean clickable) {
+    public ListItemController(ScreenController window, boolean clickable, boolean isBasket) {
         this.window = window;
         this.clickable = clickable;
+        this.isBasket = isBasket;
     }
 
     @Override protected void updateItem(Item item, boolean empty) {
         super.updateItem(item, empty);
 
+        // if the list entry changes
         if(empty || item == null) {
 
+            // clear row
             setText(null);
             setGraphic(null);
 
         } else {
 
+            // initialise and draw if it does not exits
             if (mLLoader == null) {
                 mLLoader = new FXMLLoader(getClass().getResource("ListItem.fxml"));
                 mLLoader.setController(this);
@@ -63,11 +68,13 @@ public class ListItemController extends ListCell<Item> {
                 moveButton.setOnMouseClicked( this::moveButtonHandle );
             }
 
+            // update text
             nameLabel.setText( item.getName() );
-            sizeLabel.setText( item.getSize() );
+            sizeLabel.setText( String.valueOf(item.getSize()) );
             priceLabel.setText( String.valueOf(item.getPrice()) );
 
-            if( item.isInBasket() ) {
+            // update button
+            if( isBasket ) {
                 moveButton.setText( "-" );
             } else {
                 moveButton.setText( "+" );
@@ -76,23 +83,18 @@ public class ListItemController extends ListCell<Item> {
 
             this.item = item;
 
+            // draw
             setText(null);
             setGraphic(hBox);
         }
     }
 
     private void moveButtonHandle(MouseEvent event) {
-
-        boolean inBasket = moveButton.getText().equals("+");
-
-        item.setInBasket( inBasket );
-
-        if( inBasket ) {
-            window.addBasketItem( item );
-            window.removeListItem( item );
-        } else {
-            window.addListItem( item );
+        // add/remove from basket
+        if( isBasket ) {
             window.removeBasketItem( item );
+        } else {
+            window.addBasketItem( item );
         }
     }
 }
