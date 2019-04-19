@@ -57,6 +57,7 @@ public class FileRead {
                 line = reader.readLine();
             }
 
+            newItem("EOF", "EOF");
             reader.close();
         } catch (IOException e) {
             logError(e.getLocalizedMessage(), file.getAbsolutePath() );

@@ -11,18 +11,21 @@ import java.util.ArrayList;
  * @version 1.0
  */
 public class SuffixTrie {
-    private ArrayList<TrieNode> children;
+    private TrieNode trie = new TrieNode(null, "");
 
-    // ensure that children in node are sorted
-    // check for duplicates from shorter list when combining found items
-    // finish suffix list
-    // connect search
+    public void addItem(Item item) {
+        String sanitisedName = item.getName().toLowerCase();
+        String suffixName;
 
-    public void addItems(Item item) {
-
+        for (int i = 0; i < sanitisedName.length(); i++) {
+            suffixName = sanitisedName.substring(i);
+            trie.insertItem(item, suffixName, "");
+        }
     }
 
     public ArrayList<Item> searchItems(String searchText) {
-        return new ArrayList<>();
+        String sanitisedText = searchText.toLowerCase();
+
+        return trie.searchItems(sanitisedText, "");
     }
 }

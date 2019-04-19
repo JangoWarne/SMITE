@@ -23,7 +23,7 @@
          </font>
       </Text>
       <ListView fx:id="basketListView" focusTraversable="false" layoutX="937.0" layoutY="667.0" maxHeight="231.0" prefHeight="231.0" prefWidth="443.0" />
-      <Rectangle fx:id="nameRectangle" fill="#dadada" height="30.0" layoutX="973.0" layoutY="105.0" stroke="#5d5d5d" strokeType="INSIDE" width="189.0" />
+      <Rectangle fx:id="nameRectangle" fill="#c8d8e1" height="30.0" layoutX="973.0" layoutY="105.0" stroke="#5d5d5d" strokeType="INSIDE" width="189.0" />
       <Rectangle fx:id="sizeRectangle" fill="#dadada" height="30.0" layoutX="1161.0" layoutY="105.0" stroke="#5d5d5d" strokeType="INSIDE" width="121.0" />
       <Rectangle fx:id="priceRectangle" fill="#dadada" height="30.0" layoutX="1281.0" layoutY="105.0" stroke="#5d5d5d" strokeType="INSIDE" width="99.0" />
       <Label layoutX="1125.0" layoutY="638.0" text="Basket">

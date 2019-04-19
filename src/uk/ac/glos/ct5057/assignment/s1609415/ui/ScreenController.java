@@ -4,7 +4,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import uk.ac.glos.ct5057.assignment.s1609415.algorithms.RadixSort;
 import uk.ac.glos.ct5057.assignment.s1609415.file.FileRead;
-import uk.ac.glos.ct5057.assignment.s1609415.items.Item;
+import uk.ac.glos.ct5057.assignment.s1609415.items.*;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -199,7 +199,7 @@ public class ScreenController implements Initializable {
     private ObservableList<Item> eastObservableList;
     private ObservableList<Item> westObservableList;
     private ArrayList<Item> allItems;
-    private ArrayList<Item> searchableItems;
+    private SuffixTrie searchableItems;
     private ArrayList<Item> foundItems;
 
     @FXML public void initialize(URL location, ResourceBundle resources) {
@@ -266,7 +266,8 @@ public class ScreenController implements Initializable {
 
         FileRead itemPath = new FileRead("src/uk/ac/glos/ct5057/assignment/s1609415/file/items.txt");
         allItems = itemPath.parseFile();
-        searchableItems = allItems;
+        searchableItems = new SuffixTrie();
+        allItems.forEach(item -> searchableItems.addItem(item));
         foundItems = allItems;
     }
 
@@ -573,7 +574,7 @@ public class ScreenController implements Initializable {
             foundItems = allItems;
         } else {
             // restrict found items to matching items only
-            foundItems = searchableItems;
+            foundItems = searchableItems.searchItems(searchTest);
         }
 
         //
@@ -675,6 +676,7 @@ public class ScreenController implements Initializable {
 
         // Clear search box
         searchTextField.clear();
+        foundItems = allItems;
 
         // Clear items lists
         clearListItems();
