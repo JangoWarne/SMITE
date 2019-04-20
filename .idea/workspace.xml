@@ -3,12 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SMITE.iml" beforeDir="false" afterPath="$PROJECT_DIR$/SMITE.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SMITE/uk/ac/glos/ct5057/assignment/s1609415/file/items.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SMITE/uk/ac/glos/ct5057/assignment/s1609415/file/items.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SMITE/uk/ac/glos/ct5057/assignment/s1609415/ui/Screen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SMITE/uk/ac/glos/ct5057/assignment/s1609415/ui/Screen.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/uk/ac/glos/ct5057/assignment/s1609415/file/FileRead.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uk/ac/glos/ct5057/assignment/s1609415/file/FileRead.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uk/ac/glos/ct5057/assignment/s1609415/algorithms/DijkstrasAlgorithm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uk/ac/glos/ct5057/assignment/s1609415/algorithms/DijkstrasAlgorithm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/uk/ac/glos/ct5057/assignment/s1609415/items/SuffixTrie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uk/ac/glos/ct5057/assignment/s1609415/items/SuffixTrie.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/uk/ac/glos/ct5057/assignment/s1609415/items/TrieNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uk/ac/glos/ct5057/assignment/s1609415/items/TrieNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uk/ac/glos/ct5057/assignment/s1609415/map/MapEdge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uk/ac/glos/ct5057/assignment/s1609415/map/GraphNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uk/ac/glos/ct5057/assignment/s1609415/map/MapGraph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uk/ac/glos/ct5057/assignment/s1609415/map/MapGraph.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uk/ac/glos/ct5057/assignment/s1609415/ui/Screen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/uk/ac/glos/ct5057/assignment/s1609415/ui/Screen.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/uk/ac/glos/ct5057/assignment/s1609415/ui/ScreenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/uk/ac/glos/ct5057/assignment/s1609415/ui/ScreenController.java" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
@@ -65,51 +64,17 @@
     <favorites_list name="JavaFxApplication" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+    <leaf>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/uk/ac/glos/ct5057/assignment/s1609415/ui/ScreenController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="426">
-              <caret line="269" column="64" lean-forward="true" selection-start-line="269" selection-start-column="64" selection-end-line="269" selection-end-column="64" />
+            <state relative-caret-position="205">
+              <caret line="835" column="30" selection-start-line="835" selection-start-column="30" selection-end-line="835" selection-end-column="30" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#21418#21419#0" expanded="true" />
-                <element signature="e#21443#21444#0" expanded="true" />
-                <element signature="e#24868#24869#0" expanded="true" />
+                <element signature="e#27507#27508#0" expanded="true" />
+                <element signature="e#31616#31617#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/uk/ac/glos/ct5057/assignment/s1609415/file/FileRead.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="244">
-              <caret line="59" column="24" selection-start-line="59" selection-start-column="24" selection-end-line="59" selection-end-column="24" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/uk/ac/glos/ct5057/assignment/s1609415/ui/ListItemController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1130">
-              <caret line="86" column="26" selection-start-line="86" selection-start-column="26" selection-end-line="86" selection-end-column="26" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/uk/ac/glos/ct5057/assignment/s1609415/items/Item.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="42" column="5" selection-start-line="42" selection-start-column="5" selection-end-line="42" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -117,22 +82,39 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/uk/ac/glos/ct5057/assignment/s1609415/items/SuffixTrie.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="21" selection-start-line="21" selection-end-line="21" />
+            <state relative-caret-position="480">
+              <caret line="32" column="39" selection-start-line="32" selection-start-column="39" selection-end-line="32" selection-end-column="39" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/uk/ac/glos/ct5057/assignment/s1609415/ui/ListItemController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="555">
+              <caret line="72" column="61" lean-forward="true" selection-start-line="72" selection-start-column="31" selection-end-line="72" selection-end-column="61" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/uk/ac/glos/ct5057/assignment/s1609415/items/TrieNode.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="2745">
               <caret line="183" column="16" selection-start-line="183" selection-start-column="16" selection-end-line="183" selection-end-column="16" />
               <folding>
+                <element signature="e#5831#5832#0" expanded="true" />
                 <element signature="e#5868#5869#0" expanded="true" />
+                <element signature="e#7827#7828#0" expanded="true" />
                 <element signature="e#7855#7856#0" expanded="true" />
+                <element signature="e#7902#7903#0" expanded="true" />
                 <element signature="e#7940#7941#0" expanded="true" />
+                <element signature="e#7973#7974#0" expanded="true" />
                 <element signature="e#8001#8002#0" expanded="true" />
+                <element signature="e#8050#8051#0" expanded="true" />
                 <element signature="e#8081#8082#0" expanded="true" />
               </folding>
             </state>
@@ -140,14 +122,26 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/uk/ac/glos/ct5057/assignment/s1609415/algorithms/RadixSort.java">
+        <entry file="file://$PROJECT_DIR$/src/uk/ac/glos/ct5057/assignment/s1609415/algorithms/DijkstrasAlgorithm.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-462">
-              <caret line="96" column="45" selection-start-line="96" selection-start-column="45" selection-end-line="96" selection-end-column="45" />
+            <state relative-caret-position="516">
+              <caret line="145" selection-start-line="145" selection-end-line="145" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#5714#5715#0" expanded="true" />
-                <element signature="e#5759#5760#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/uk/ac/glos/ct5057/assignment/s1609415/map/GraphNode.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="285">
+              <caret line="19" selection-start-line="19" selection-end-line="19" />
+              <folding>
+                <element signature="e#343#344#0" expanded="true" />
+                <element signature="e#382#383#0" expanded="true" />
+                <element signature="e#466#467#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -156,8 +150,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/uk/ac/glos/ct5057/assignment/s1609415/map/MapGraph.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="93" selection-start-line="4" selection-start-column="93" selection-end-line="4" selection-end-column="93" />
+            <state relative-caret-position="480">
+              <caret line="32" selection-start-line="32" selection-end-line="32" />
             </state>
           </provider>
         </entry>
@@ -213,12 +207,10 @@
         <option value="$PROJECT_DIR$/src/uk/ac/glos/ct5057/assignment/s1609415/ui/Screen.fxml" />
         <option value="$PROJECT_DIR$/src/uk/ac/glos/ct5057/assignment/s1609415/ui/ListItem.fxml" />
         <option value="$PROJECT_DIR$/src/uk/ac/glos/ct5057/assignment/s1609415/algorithms/DikstrasAlgorithm.java" />
-        <option value="$PROJECT_DIR$/src/uk/ac/glos/ct5057/assignment/s1609415/algorithms/DijkstrasAlgorithm.java" />
         <option value="$PROJECT_DIR$/src/uk/ac/glos/ct5057/assignment/s1609415/algorithms/RadixSearch.java" />
         <option value="$PROJECT_DIR$/src/uk/ac/glos/ct5057/assignment/s1609415/algorithms/TrieSearch.java" />
         <option value="$PROJECT_DIR$/src/uk/ac/glos/ct5057/assignment/s1609415/map/Business.java" />
         <option value="$PROJECT_DIR$/src/uk/ac/glos/ct5057/assignment/s1609415/map/MapEdge.java" />
-        <option value="$PROJECT_DIR$/src/uk/ac/glos/ct5057/assignment/s1609415/map/MapGraph.java" />
         <option value="$PROJECT_DIR$/src/uk/ac/glos/ct5057/assignment/s1609415/items/ItemTrie.java" />
         <option value="$PROJECT_DIR$/src/uk/ac/glos/ct5057/assignment/s1609415/items/WholeTextTrie.java" />
         <option value="$PROJECT_DIR$/src/uk/ac/glos/ct5057/assignment/s1609415/items/SubtextTrie.java" />
@@ -228,11 +220,14 @@
         <option value="$PROJECT_DIR$/src/uk/ac/glos/ct5057/assignment/s1609415/items/Item.java" />
         <option value="$PROJECT_DIR$/src/uk/ac/glos/ct5057/assignment/s1609415/algorithms/RadixSort.java" />
         <option value="$PROJECT_DIR$/src/uk/ac/glos/ct5057/assignment/s1609415/ui/ListItemController.java" />
-        <option value="$PROJECT_DIR$/src/uk/ac/glos/ct5057/assignment/s1609415/items/SuffixTrie.java" />
-        <option value="$PROJECT_DIR$/src/uk/ac/glos/ct5057/assignment/s1609415/ui/ScreenController.java" />
         <option value="$PROJECT_DIR$/src/uk/ac/glos/ct5057/assignment/s1609415/file/FileRead.java" />
         <option value="$PROJECT_DIR$/src/uk/ac/glos/ct5057/assignment/s1609415/file/items.txt" />
         <option value="$PROJECT_DIR$/src/uk/ac/glos/ct5057/assignment/s1609415/items/TrieNode.java" />
+        <option value="$PROJECT_DIR$/src/uk/ac/glos/ct5057/assignment/s1609415/map/MapGraph.java" />
+        <option value="$PROJECT_DIR$/src/uk/ac/glos/ct5057/assignment/s1609415/map/GraphNode.java" />
+        <option value="$PROJECT_DIR$/src/uk/ac/glos/ct5057/assignment/s1609415/algorithms/DijkstrasAlgorithm.java" />
+        <option value="$PROJECT_DIR$/src/uk/ac/glos/ct5057/assignment/s1609415/items/SuffixTrie.java" />
+        <option value="$PROJECT_DIR$/src/uk/ac/glos/ct5057/assignment/s1609415/ui/ScreenController.java" />
       </list>
     </option>
   </component>
@@ -326,7 +321,7 @@
     <property name="MemberChooser.sorted" value="false" />
     <property name="OverrideImplement.combined" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555701606152" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555799537968" />
     <property name="dynamic.classpath" value="false" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -449,9 +444,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1200" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.21778488" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.22204472" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" />
       <window_info id="Designer" order="3" />
@@ -460,7 +454,7 @@
       <window_info id="Capture Tool" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.23539823" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32920355" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32920355" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -470,7 +464,7 @@
       <window_info anchor="bottom" id="Problems" order="9" />
       <window_info anchor="bottom" id="Changes" order="10" />
       <window_info anchor="bottom" id="Profiler" order="11" />
-      <window_info anchor="bottom" id="Event Log" order="12" />
+      <window_info anchor="bottom" id="Event Log" order="12" weight="0.21150443" />
       <window_info anchor="bottom" id="Messages" order="13" weight="0.32920355" />
       <window_info anchor="bottom" id="Terminal" order="14" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -498,16 +492,6 @@
     <entry file="file://$PROJECT_DIR$/src/sample/sample.fxml" />
     <entry file="file://$PROJECT_DIR$/src/sample/Controller.java" />
     <entry file="file://$PROJECT_DIR$/src/uk/ac/glos/ct5057/assignment/s1609415/map/Warehouse.java" />
-    <entry file="file://$PROJECT_DIR$/src/uk/ac/glos/ct5057/assignment/s1609415/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="20" column="67" selection-start-line="20" selection-start-column="67" selection-end-line="20" selection-end-column="67" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/uk/ac/glos/ct5057/assignment/s1609415/ui/Screen.fxml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2160">
@@ -536,107 +520,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/uk/ac/glos/ct5057/assignment/s1609415/items/ItemTrie.java" />
-    <entry file="file://$PROJECT_DIR$/src/uk/ac/glos/ct5057/assignment/s1609415/map/MapEdge.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="77" selection-start-line="4" selection-start-column="77" selection-end-line="4" selection-end-column="77" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/uk/ac/glos/ct5057/assignment/s1609415/algorithms/DijkstrasAlgorithm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="25" selection-start-line="6" selection-start-column="25" selection-end-line="6" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/uk/ac/glos/ct5057/assignment/s1609415/map/MapGraph.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="93" selection-start-line="4" selection-start-column="93" selection-end-line="4" selection-end-column="93" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/uk/ac/glos/ct5057/assignment/s1609415/algorithms/TrieSearch.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/uk/ac/glos/ct5057/assignment/s1609415/items/SortedTrie.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="27" column="126" selection-start-line="27" selection-start-column="126" selection-end-line="27" selection-end-column="126" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/uk/ac/glos/ct5057/assignment/s1609415/algorithms/CompressedSort.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="107" selection-start-line="15" selection-start-column="107" selection-end-line="15" selection-end-column="107" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/uk/ac/glos/ct5057/assignment/s1609415/algorithms/RadixSort.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-462">
-          <caret line="96" column="45" selection-start-line="96" selection-start-column="45" selection-end-line="96" selection-end-column="45" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#5714#5715#0" expanded="true" />
-            <element signature="e#5759#5760#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/uk/ac/glos/ct5057/assignment/s1609415/ui/ListItemController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1130">
-          <caret line="86" column="26" selection-start-line="86" selection-start-column="26" selection-end-line="86" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/uk/ac/glos/ct5057/assignment/s1609415/algorithms/TrieSearch.java" />
+    <entry file="file://$PROJECT_DIR$/src/uk/ac/glos/ct5057/assignment/s1609415/items/SortedTrie.java" />
+    <entry file="file://$PROJECT_DIR$/src/uk/ac/glos/ct5057/assignment/s1609415/algorithms/CompressedSort.java" />
     <entry file="file://$PROJECT_DIR$/src/uk/ac/glos/ct5057/assignment/s1609415/items/Item.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
           <caret line="42" column="5" selection-start-line="42" selection-start-column="5" selection-end-line="42" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/uk/ac/glos/ct5057/assignment/s1609415/ui/ScreenController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="426">
-          <caret line="269" column="64" lean-forward="true" selection-start-line="269" selection-start-column="64" selection-end-line="269" selection-end-column="64" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#21418#21419#0" expanded="true" />
-            <element signature="e#21443#21444#0" expanded="true" />
-            <element signature="e#24868#24869#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/uk/ac/glos/ct5057/assignment/s1609415/file/FileRead.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="244">
-          <caret line="59" column="24" selection-start-line="59" selection-start-column="24" selection-end-line="59" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/uk/ac/glos/ct5057/assignment/s1609415/items/SuffixTrie.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" selection-start-line="21" selection-end-line="21" />
         </state>
       </provider>
     </entry>
@@ -647,16 +537,116 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/uk/ac/glos/ct5057/assignment/s1609415/file/FileRead.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="690">
+          <caret line="59" column="24" selection-start-line="59" selection-start-column="24" selection-end-line="59" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/uk/ac/glos/ct5057/assignment/s1609415/algorithms/RadixSort.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1380">
+          <caret line="96" column="45" selection-start-line="96" selection-start-column="45" selection-end-line="96" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/uk/ac/glos/ct5057/assignment/s1609415/map/GraphNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
+          <folding>
+            <element signature="e#343#344#0" expanded="true" />
+            <element signature="e#382#383#0" expanded="true" />
+            <element signature="e#466#467#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/uk/ac/glos/ct5057/assignment/s1609415/map/MapGraph.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="32" selection-start-line="32" selection-end-line="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk-10.0.2.jdk/Contents/Home/lib/src.zip!/javafx.graphics/javafx/animation/Animation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="397">
+          <caret line="188" selection-start-line="188" selection-end-line="188" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/uk/ac/glos/ct5057/assignment/s1609415/items/TrieNode.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2745">
           <caret line="183" column="16" selection-start-line="183" selection-start-column="16" selection-end-line="183" selection-end-column="16" />
           <folding>
+            <element signature="e#5831#5832#0" expanded="true" />
             <element signature="e#5868#5869#0" expanded="true" />
+            <element signature="e#7827#7828#0" expanded="true" />
             <element signature="e#7855#7856#0" expanded="true" />
+            <element signature="e#7902#7903#0" expanded="true" />
             <element signature="e#7940#7941#0" expanded="true" />
+            <element signature="e#7973#7974#0" expanded="true" />
             <element signature="e#8001#8002#0" expanded="true" />
+            <element signature="e#8050#8051#0" expanded="true" />
             <element signature="e#8081#8082#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/uk/ac/glos/ct5057/assignment/s1609415/algorithms/DijkstrasAlgorithm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="516">
+          <caret line="145" selection-start-line="145" selection-end-line="145" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/uk/ac/glos/ct5057/assignment/s1609415/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="67" selection-start-line="20" selection-start-column="67" selection-end-line="20" selection-end-column="67" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/uk/ac/glos/ct5057/assignment/s1609415/ui/ListItemController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="555">
+          <caret line="72" column="61" lean-forward="true" selection-start-line="72" selection-start-column="31" selection-end-line="72" selection-end-column="61" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/uk/ac/glos/ct5057/assignment/s1609415/items/SuffixTrie.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="32" column="39" selection-start-line="32" selection-start-column="39" selection-end-line="32" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/uk/ac/glos/ct5057/assignment/s1609415/ui/ScreenController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="205">
+          <caret line="835" column="30" selection-start-line="835" selection-start-column="30" selection-end-line="835" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#27507#27508#0" expanded="true" />
+            <element signature="e#31616#31617#0" expanded="true" />
           </folding>
         </state>
       </provider>

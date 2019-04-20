@@ -2,6 +2,7 @@ package uk.ac.glos.ct5057.assignment.s1609415.ui;
 
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import uk.ac.glos.ct5057.assignment.s1609415.algorithms.DijkstrasAlgorithm;
 import uk.ac.glos.ct5057.assignment.s1609415.algorithms.RadixSort;
 import uk.ac.glos.ct5057.assignment.s1609415.file.FileRead;
 import uk.ac.glos.ct5057.assignment.s1609415.items.*;
@@ -19,6 +20,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.Region;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Polygon;
+import uk.ac.glos.ct5057.assignment.s1609415.map.MapGraph;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -116,7 +118,7 @@ public class ScreenController implements Initializable {
     @FXML private Pane west_78_Pane;
     @FXML private Pane west_W8_Pane;
     @FXML private Pane west_RW_Pane;
-    @FXML private Pane west_NP_Pane;
+    @FXML private Pane west_NR_Pane;
     @FXML private Pane west_NQ_Pane;
     @FXML private Pane west_QR_Pane;
     @FXML private Pane west_Q1_Pane;
@@ -201,6 +203,9 @@ public class ScreenController implements Initializable {
     private ArrayList<Item> allItems;
     private SuffixTrie searchableItems;
     private ArrayList<Item> foundItems;
+    private MapGraph mapGraph;
+    private ArrayList<Character> bestRouteEast;
+    private ArrayList<Character> bestRouteWest;
 
     @FXML public void initialize(URL location, ResourceBundle resources) {
 
@@ -226,8 +231,8 @@ public class ScreenController implements Initializable {
         // Handler for text input
         searchTextField.textProperty().addListener( (observable, oldText, newText) -> itemSearch(newText) );
 
-        // Create map of routes
-        mapRoutes();
+        // Create HashMap of routes
+        createRoutesHashMap();
 
         // Define itemListView
         itemsListView.setItems(itemObservableList);
@@ -264,18 +269,24 @@ public class ScreenController implements Initializable {
         eastObservableList = FXCollections.observableArrayList();
         westObservableList = FXCollections.observableArrayList();
 
+        bestRouteEast = new ArrayList<>();
+        bestRouteWest = new ArrayList<>();
+
         FileRead itemPath = new FileRead("src/uk/ac/glos/ct5057/assignment/s1609415/file/items.txt");
         allItems = itemPath.parseFile();
         searchableItems = new SuffixTrie();
         allItems.forEach(item -> searchableItems.addItem(item));
         foundItems = allItems;
+
+        // Create MapGraph of routes
+        createRoutesMapGraph();
     }
 
 
 
     // Business UI event handlers
 
-    private void clearBusinesses(){
+    private void clearBusinesses() {
         // clear user selection
         businessA_Circle.setVisible(false);
         businessF_Circle.setVisible(false);
@@ -294,72 +305,153 @@ public class ScreenController implements Initializable {
         // Select Business
         clearBusinesses();
         businessA_Circle.setVisible(true);
+
+        // Show Route
+        bestRouteEast = DijkstrasAlgorithm.shortestRoute(mapGraph, '7', 'A');
+        bestRouteWest = DijkstrasAlgorithm.shortestRoute(mapGraph, 'C', 'A');
+        showRoutes();
     }
 
     private void businessFHandle(MouseEvent event) {
         // Select Business
         clearBusinesses();
         businessF_Circle.setVisible(true);
+
+        // Show Route
+        bestRouteEast = DijkstrasAlgorithm.shortestRoute(mapGraph, '7', 'F');
+        bestRouteWest = DijkstrasAlgorithm.shortestRoute(mapGraph, 'C', 'F');
+        showRoutes();
     }
 
     private void businessJHandle(MouseEvent event) {
         // Select Business
         clearBusinesses();
         businessJ_Circle.setVisible(true);
+
+        // Show Route
+        bestRouteEast = DijkstrasAlgorithm.shortestRoute(mapGraph, '7', 'J');
+        bestRouteWest = DijkstrasAlgorithm.shortestRoute(mapGraph, 'C', 'J');
+        showRoutes();
     }
 
     private void businessLHandle(MouseEvent event) {
         // Select Business
         clearBusinesses();
         businessL_Circle.setVisible(true);
+
+        // Show Route
+        bestRouteEast = DijkstrasAlgorithm.shortestRoute(mapGraph, '7', 'L');
+        bestRouteWest = DijkstrasAlgorithm.shortestRoute(mapGraph, 'C', 'L');
+        showRoutes();
     }
 
     private void businessNHandle(MouseEvent event) {
         // Select Business
         clearBusinesses();
         businessN_Circle.setVisible(true);
+
+        // Show Route
+        bestRouteEast = DijkstrasAlgorithm.shortestRoute(mapGraph, '7', 'N');
+        bestRouteWest = DijkstrasAlgorithm.shortestRoute(mapGraph, 'C', 'N');
+        showRoutes();
     }
 
     private void businessOHandle(MouseEvent event) {
         // Select Business
         clearBusinesses();
         businessO_Circle.setVisible(true);
+
+        // Show Route
+        bestRouteEast = DijkstrasAlgorithm.shortestRoute(mapGraph, '7', 'O');
+        bestRouteWest = DijkstrasAlgorithm.shortestRoute(mapGraph, 'C', 'O');
+        showRoutes();
     }
 
     private void businessTHandle(MouseEvent event) {
         // Select Business
         clearBusinesses();
         businessT_Circle.setVisible(true);
+
+        // Show Route
+        bestRouteEast = DijkstrasAlgorithm.shortestRoute(mapGraph, '7', 'T');
+        bestRouteWest = DijkstrasAlgorithm.shortestRoute(mapGraph, 'C', 'T');
+        showRoutes();
     }
 
     private void businessVHandle(MouseEvent event) {
         // Select Business
         clearBusinesses();
         businessV_Circle.setVisible(true);
+
+        // Show Route
+        bestRouteEast = DijkstrasAlgorithm.shortestRoute(mapGraph, '7', 'V');
+        bestRouteWest = DijkstrasAlgorithm.shortestRoute(mapGraph, 'C', 'V');
+        showRoutes();
     }
 
     private void businessWHandle(MouseEvent event) {
         // Select Business
         clearBusinesses();
         businessW_Circle.setVisible(true);
+
+        // Show Route
+        bestRouteEast = DijkstrasAlgorithm.shortestRoute(mapGraph, '7', 'W');
+        bestRouteWest = DijkstrasAlgorithm.shortestRoute(mapGraph, 'C', 'W');
+        showRoutes();
     }
 
     private void business2Handle(MouseEvent event) {
         // Select Business
         clearBusinesses();
         business2_Circle.setVisible(true);
+
+        // Show Route
+        bestRouteEast = DijkstrasAlgorithm.shortestRoute(mapGraph, '7', '2');
+        bestRouteWest = DijkstrasAlgorithm.shortestRoute(mapGraph, 'C', '2');
+        showRoutes();
     }
 
     private void business4Handle(MouseEvent event) {
         // Select Business
         clearBusinesses();
         business4_Circle.setVisible(true);
+
+        // Show Route
+        bestRouteEast = DijkstrasAlgorithm.shortestRoute(mapGraph, '7', '4');
+        bestRouteWest = DijkstrasAlgorithm.shortestRoute(mapGraph, 'C', '4');
+        showRoutes();
     }
 
+    private void showRoutes() {
+        Character node1;
+        Character node2;
 
+        // Hide all routes
+        routes.forEach((k, route) -> route.setVisible(false));
 
-    private void mapRoutes(){
-        // Create map of routes
+        // Show route to east warehouse if needed
+        if ( !eastObservableList.isEmpty() && !bestRouteEast.isEmpty() ) {
+            for (int i = 0; i < bestRouteEast.size()-1; i++) {
+                node1 = bestRouteEast.get(i);
+                node2 = bestRouteEast.get(i+1);
+
+                routeVisibility("east", node1, node2, true);
+            }
+        }
+
+        // Show route to west warehouse if needed
+        if ( !westObservableList.isEmpty() && !bestRouteWest.isEmpty() ) {
+            for (int i = 0; i < bestRouteWest.size()-1; i++) {
+                node1 = bestRouteWest.get(i);
+                node2 = bestRouteWest.get(i+1);
+
+                routeVisibility("west", node1, node2, true);
+            }
+        }
+    }
+
+    private void createRoutesHashMap(){
+        // Create HashMap of routes for showing routes
         routes = new HashMap<>();
         routes.put("west_AE", west_AE_Pane);
         routes.put("east_AE", east_AE_Pane);
@@ -393,7 +485,7 @@ public class ScreenController implements Initializable {
         routes.put("west_78", west_78_Pane);
         routes.put("west_W8", west_W8_Pane);
         routes.put("west_RW", west_RW_Pane);
-        routes.put("west_NP", west_NP_Pane);
+        routes.put("west_NR", west_NR_Pane);
         routes.put("west_NQ", west_NQ_Pane);
         routes.put("west_QR", west_QR_Pane);
         routes.put("west_Q1", west_Q1_Pane);
@@ -471,16 +563,76 @@ public class ScreenController implements Initializable {
         routes.put("east_DE", east_DE_Pane);
     }
 
-    public void routeVisibility(String warehouse, String nodeA, String nodeB, boolean visible) {
-        String routeKey;
-        Pane route;
+    private void createRoutesMapGraph(){
+        // Create MapGraph of routes for searching routes
+        mapGraph = new MapGraph();
+        mapGraph.addEdge('A', 'E', 4);
+        mapGraph.addEdge('A', 'B', 4);
+        mapGraph.addEdge('F', 'O', 6);
+        mapGraph.addEdge('D', 'E', 6);
+        mapGraph.addEdge('D', 'J', 6);
+        mapGraph.addEdge('G', 'L', 8);
+        mapGraph.addEdge('K', 'N', 6);
+        mapGraph.addEdge('M', 'O', 3);
+        mapGraph.addEdge('L', 'T', 7);
+        mapGraph.addEdge('P', 'U', 2);
+        mapGraph.addEdge('S', 'V', 4);
+        mapGraph.addEdge('X', '3', 2);
+        mapGraph.addEdge('Z', '4', 1);
+        mapGraph.addEdge('6', '7', 3);
+        mapGraph.addEdge('T', 'V', 2);
+        mapGraph.addEdge('E', 'I', 3);
+        mapGraph.addEdge('B', 'F', 1);
+        mapGraph.addEdge('O', 'P', 1);
+        mapGraph.addEdge('I', 'N', 4);
+        mapGraph.addEdge('U', 'X', 1);
+        mapGraph.addEdge('7', '8', 1);
+        mapGraph.addEdge('W', '8', 3);
+        mapGraph.addEdge('R', 'W', 1);
+        mapGraph.addEdge('N', 'R', 2);
+        mapGraph.addEdge('N', 'Q', 2);
+        mapGraph.addEdge('Q', 'R', 2);
+        mapGraph.addEdge('Q', '1', 2);
+        mapGraph.addEdge('W', '1', 1);
+        mapGraph.addEdge('1', '2', 1);
+        mapGraph.addEdge('2', '7', 2);
+        mapGraph.addEdge('4', '6', 1);
+        mapGraph.addEdge('3', '4', 1);
+        mapGraph.addEdge('5', '6', 1);
+        mapGraph.addEdge('X', 'Y', 1);
+        mapGraph.addEdge('Y', '3', 3);
+        mapGraph.addEdge('V', 'Y', 1);
+        mapGraph.addEdge('T', 'Z', 3);
+        mapGraph.addEdge('Z', '1', 3);
+        mapGraph.addEdge('2', '5', 2);
+        mapGraph.addEdge('Z', '5', 2);
+        mapGraph.addEdge('Q', 'T', 4);
+        mapGraph.addEdge('P', 'S', 3);
+        mapGraph.addEdge('S', 'U', 2);
+        mapGraph.addEdge('L', 'M', 1);
+        mapGraph.addEdge('J', 'K', 1);
+        mapGraph.addEdge('I', 'J', 2);
+        mapGraph.addEdge('K', 'L', 5);
+        mapGraph.addEdge('A', 'C', 3);
+        mapGraph.addEdge('C', 'D', 2);
+        mapGraph.addEdge('C', 'G', 6);
+        mapGraph.addEdge('B', 'G', 4);
+        mapGraph.addEdge('G', 'H', 3);
+        mapGraph.addEdge('F', 'H', 2);
+        mapGraph.addEdge('H', 'M', 8);
+    }
 
-        // select requested route
-        routeKey = warehouse + "_" + nodeA + nodeB;
-        route = routes.get(routeKey);
+    public void routeVisibility(String warehouse, Character nodeA, Character nodeB, boolean visible) {
+        String routeKey1 = warehouse + "_" + nodeA + nodeB;
+        String routeKey2 = warehouse + "_" + nodeB + nodeA;
 
-        // shoe route
-        route.setVisible(visible);
+        // check for and set visibility of requested route
+        if (routes.containsKey(routeKey1)) {
+            routes.get(routeKey1).setVisible(visible);
+
+        } else if(routes.containsKey(routeKey2)) {
+            routes.get(routeKey2).setVisible(visible);
+        }
     }
 
     private void nameRegionHandle(MouseEvent event) {
@@ -634,6 +786,10 @@ public class ScreenController implements Initializable {
     }
 
     protected void addBasketItem(Item item) {
+        // get current isEmpty status of baskets
+        boolean eastEmpty = eastObservableList.isEmpty();
+        boolean westEmpty = westObservableList.isEmpty();
+
         // add item to the basket and its warehouse list
         basketObservableList.add( item );
 
@@ -642,9 +798,18 @@ public class ScreenController implements Initializable {
         } else {
             westObservableList.add( item );
         }
+
+        // update routes if isEmpty status has changed
+        if ( (eastEmpty != eastObservableList.isEmpty()) || (westEmpty != westObservableList.isEmpty()) ) {
+            showRoutes();
+        }
     }
 
     protected void removeBasketItem(Item item) {
+        // get current isEmpty status of baskets
+        boolean eastEmpty = eastObservableList.isEmpty();
+        boolean westEmpty = westObservableList.isEmpty();
+
         // remove item from the basket and its warehouse list
         basketObservableList.remove( item );
 
@@ -652,6 +817,11 @@ public class ScreenController implements Initializable {
             eastObservableList.remove( item );
         } else {
             westObservableList.remove( item );
+        }
+
+        // update routes if isEmpty status has changed
+        if ( (eastEmpty != eastObservableList.isEmpty()) || (westEmpty != westObservableList.isEmpty()) ) {
+            showRoutes();
         }
     }
 
@@ -662,6 +832,8 @@ public class ScreenController implements Initializable {
     private void resetUI() {
         // Reset business selection
         clearBusinesses();
+        bestRouteWest.clear();
+        bestRouteEast.clear();
 
         // Hide all routes
         routes.forEach((k, route) -> route.setVisible(false));

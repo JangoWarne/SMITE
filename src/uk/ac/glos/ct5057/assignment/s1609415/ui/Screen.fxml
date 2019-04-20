@@ -128,14 +128,14 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <Label layoutX="650.0" layoutY="90.0" text="1: Select a business" />
-      <Label layoutX="650.0" layoutY="104.0" text="2: Search and sort items" />
-      <Label layoutX="650.0" layoutY="118.0" text="3: Add or remove items from basket" />
+      <Label layoutX="650.0" layoutY="90.0" text="1: Search for and sort items" />
+      <Label layoutX="650.0" layoutY="104.0" text="2: Add or remove items from basket" />
+      <Label layoutX="650.0" layoutY="118.0" text="3: Select a business" />
       <Region fx:id="sendDeliveryRegion" layoutX="1065.0" layoutY="924.0" prefHeight="44.0" prefWidth="184.0" />
       <Region fx:id="nameRegion" layoutX="973.0" layoutY="105.0" prefHeight="30.0" prefWidth="189.0" />
       <Region fx:id="sizeRegion" layoutX="1161.0" layoutY="105.0" prefHeight="30.0" prefWidth="121.0" />
       <Region fx:id="priceRegion" layoutX="1282.0" layoutY="105.0" prefHeight="30.0" prefWidth="99.0" />
-      <TextField fx:id="searchTextField" layoutX="937.0" layoutY="66.0" prefHeight="27.0" prefWidth="443.0" promptText="Search Names..." />
+      <TextField fx:id="searchTextField" layoutX="937.0" layoutY="66.0" prefHeight="27.0" prefWidth="443.0" promptText="Search..." />
       <Label layoutX="650.0" layoutY="132.0" text="4: Send delivery (reset)" />
       <Line endX="15.0" layoutX="378.0" layoutY="709.0" rotate="45.0" startX="-15.0" stroke="#001eff" strokeWidth="3.0" />
       <Line endX="15.0" layoutX="851.0" layoutY="709.0" rotate="45.0" startX="-15.0" stroke="#b50000" strokeWidth="3.0" />
@@ -329,7 +329,7 @@
                   <Line endX="21.0" layoutX="46.0" layoutY="18.0" startX="-21.0" stroke="#001eff" strokeWidth="3.0" />
                </children>
             </Pane>
-            <Pane fx:id="west_NP_Pane" layoutX="477.0" layoutY="531.0" prefHeight="35.0" prefWidth="103.0">
+            <Pane fx:id="west_NR_Pane" layoutX="477.0" layoutY="531.0" prefHeight="35.0" prefWidth="103.0">
                <children>
                   <Line endX="26.0" layoutX="29.0" layoutY="19.0" rotate="16.0" startX="-26.0" stroke="#001eff" strokeWidth="3.0" />
                   <Line endX="18.0" layoutX="75.0" layoutY="27.0" startX="-18.0" stroke="#001eff" strokeWidth="3.0" />
@@ -783,7 +783,7 @@
             <Image url="@business.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="772.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="20.0" fitWidth="19.0" layoutX="775.0" layoutY="117.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@business.png" />
          </image>
