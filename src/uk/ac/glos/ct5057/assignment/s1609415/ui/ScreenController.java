@@ -272,7 +272,23 @@ public class ScreenController implements Initializable {
         bestRouteEast = new ArrayList<>();
         bestRouteWest = new ArrayList<>();
 
-        FileRead itemPath = new FileRead("src/uk/ac/glos/ct5057/assignment/s1609415/file/items.txt");
+        String absolute = getClass().getProtectionDomain().getCodeSource().getLocation().toExternalForm();
+        absolute = absolute.substring(0, absolute.length() - 1);
+        absolute = absolute.substring(0, absolute.lastIndexOf("/") + 1);
+        String configPath = absolute + "items.txt";
+        String os = System.getProperty("os.name");
+        if (os.indexOf("Windows") != -1) {
+            configPath = configPath.replace("/", "\\\\");
+            if (configPath.indexOf("file:\\\\") != -1) {
+                configPath = configPath.replace("file:\\\\", "");
+            }
+        } else if (configPath.indexOf("file:") != -1) {
+            configPath = configPath.replace("file:", "");
+        }
+        configPath = configPath.replace("%20", " ");
+
+        FileRead itemPath = new FileRead(configPath);
+        //FileRead itemPath = new FileRead("src/uk/ac/glos/ct5057/assignment/s1609415/file/items.txt");
         allItems = itemPath.parseFile();
         searchableItems = new SuffixTrie();
         allItems.forEach(item -> searchableItems.addItem(item));
@@ -622,7 +638,7 @@ public class ScreenController implements Initializable {
         mapGraph.addEdge('H', 'M', 8);
     }
 
-    public void routeVisibility(String warehouse, Character nodeA, Character nodeB, boolean visible) {
+    private void routeVisibility(String warehouse, Character nodeA, Character nodeB, boolean visible) {
         String routeKey1 = warehouse + "_" + nodeA + nodeB;
         String routeKey2 = warehouse + "_" + nodeB + nodeA;
 
@@ -720,13 +736,13 @@ public class ScreenController implements Initializable {
         resetUI();
     }
 
-    private void itemSearch(String searchTest) {
-        if( searchTest.isEmpty() ) {
+    private void itemSearch(String searchText) {
+        if( searchText.isEmpty() ) {
             // show all items
             foundItems = allItems;
         } else {
             // restrict found items to matching items only
-            foundItems = searchableItems.searchItems(searchTest);
+            foundItems = searchableItems.searchItems(searchText);
         }
 
         //

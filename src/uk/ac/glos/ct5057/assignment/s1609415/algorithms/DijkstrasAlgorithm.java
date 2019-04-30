@@ -21,11 +21,11 @@ public class DijkstrasAlgorithm {
         Character progressNode = startNode;
 
         if (progressNode != endNode) {
-
             while (progressNode != endNode) {
-                searchedNodes.add(progressNode);
-                addDistances(allDistances, searchedNodes, progressNode, graph.getEdges(progressNode));
-                progressNode = nearestUncheckedNode(allDistances, searchedNodes);
+
+                searchedNodes.add(progressNode);    // add current node to already searched nodes
+                addDistances(allDistances, searchedNodes, progressNode, graph.getEdges(progressNode));  // updates distances based on current node
+                progressNode = nearestUncheckedNode(allDistances, searchedNodes);   // find the closest node
 
                 if (progressNode == null) {
                     route = new ArrayList<>();
@@ -51,6 +51,7 @@ public class DijkstrasAlgorithm {
         Integer newMax;
 
         if (allDistances.containsKey(progressNode)) {
+            // if the node is already in the list
             progressDistances = allDistances.get( progressNode );
             progressMax = progressDistances.get( progressDistances.size()-1 );
         } else {
@@ -61,18 +62,22 @@ public class DijkstrasAlgorithm {
             if (!searchedNodes.contains(node)) {
 
                 if (allDistances.containsKey(node)) {
+                    // if the node is already in the list
                     nodeDistances = allDistances.get(node);
                     nodeMax = nodeDistances.get( nodeDistances.size()-1 );
                 } else {
                     allDistances.put(node, new ArrayList<>());
-                    nodeMax = Integer.MAX_VALUE;
+                    nodeMax = Integer.MAX_VALUE;    // nodes default to infinity
                 }
 
+                // calculate distance value for node
                 newMax = progressMax + edges.get(node);
                 if (newMax > nodeMax) {
                     newMax = nodeMax;
                 }
 
+                // each checked node is a unique index for all node distance arrays
+                // for new node or node that has skipped an update add missing indexes
                 nodeDistances = allDistances.get(node);
                 for (int i = nodeDistances.size(); i < searchedNodes.indexOf(progressNode); i++) {
                     nodeDistances.add(nodeMax);
@@ -90,6 +95,7 @@ public class DijkstrasAlgorithm {
         Character nearest = null;
         boolean first = true;
 
+        // find node with shortest distance that is not in the list of searched nodes
         for (Character node: allDistances.keySet()) {
             if (!searchedNodes.contains(node)) {
                 nodeDistances = allDistances.get(node);
@@ -125,6 +131,7 @@ public class DijkstrasAlgorithm {
             nodeDistances = allDistances.get(progressNode);
 
             if (nodeDistances.size() > 1) {
+                // for current node find that first index that had the current distance
                 for (int i = nodeDistances.size() - 1; i > 0; i--) {
                     currentLength = nodeDistances.get(i);
                     nextLength = nodeDistances.get(i - 1);
@@ -143,6 +150,7 @@ public class DijkstrasAlgorithm {
                 nextNode = 0;
             }
 
+            // find the node who's index matches the first index position
             progressNode = searchedNodes.get(nextNode);
             route.add(progressNode);
         }

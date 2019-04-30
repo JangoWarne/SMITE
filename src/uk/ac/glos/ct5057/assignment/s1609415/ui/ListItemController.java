@@ -35,7 +35,7 @@ public class ListItemController extends ListCell<Item> {
     private boolean clickable;
     private boolean isBasket;
 
-    public ListItemController(ScreenController window, boolean clickable, boolean isBasket) {
+    protected ListItemController(ScreenController window, boolean clickable, boolean isBasket) {
         this.window = window;
         this.clickable = clickable;
         this.isBasket = isBasket;
