@@ -18,6 +18,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception{
+        // Run UI
         Parent mainScene = FXMLLoader.load(getClass().getResource("ui/Screen.fxml"));
         stage.setTitle("Shipping Management In a Terrestrial Environment");
         stage.setResizable(false);

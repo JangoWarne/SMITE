@@ -19,16 +19,19 @@ public class SuffixTrie {
         String sanitisedPrice = String.valueOf(item.getPrice());
         String suffixName;
 
+        // Add Names to suffix trie
         for (int i = 0; i < sanitisedName.length(); i++) {
             suffixName = sanitisedName.substring(i);
             trie.insertItem(item, suffixName, "");
         }
 
+        // Add Sizes to suffix trie
         for (int i = 0; i < sanitisedSize.length(); i++) {
             suffixName = sanitisedSize.substring(i);
             trie.insertItem(item, suffixName, "");
         }
 
+        // Add Prices to suffix trie
         for (int i = 0; i < sanitisedPrice.length(); i++) {
             suffixName = sanitisedPrice.substring(i);
             trie.insertItem(item, suffixName, "");
