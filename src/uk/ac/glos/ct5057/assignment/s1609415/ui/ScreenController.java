@@ -272,6 +272,10 @@ public class ScreenController implements Initializable {
         bestRouteEast = new ArrayList<>();
         bestRouteWest = new ArrayList<>();
 
+
+        // Stack Overflow. (2013). How to get the execution directory path in java. [online]
+        // Available at: https://stackoverflow.com/questions/17939556/how-to-get-the-execution-directory-path-in-java [Accessed 29 Apr. 2019].
+
         String absolute = getClass().getProtectionDomain().getCodeSource().getLocation().toExternalForm();
         absolute = absolute.substring(0, absolute.length() - 1);
         absolute = absolute.substring(0, absolute.lastIndexOf("/") + 1);
@@ -287,6 +291,8 @@ public class ScreenController implements Initializable {
         }
         configPath = configPath.replace("%20", " ");
 
+
+        
         FileRead itemPath = new FileRead(configPath);
         //FileRead itemPath = new FileRead("src/uk/ac/glos/ct5057/assignment/s1609415/file/items.txt");
         allItems = itemPath.parseFile();
